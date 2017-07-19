@@ -2,12 +2,12 @@
 // 题目：如下为类型CMyString的声明，请为该类型添加赋值运算符函数。
 
 #include<cstring>
-#include<cstdio>
+#include<cstdio>   
 
 class CMyString
 {
 public:
-    CMyString(char* pData = nullptr);
+    CMyString(char* pData = nullptr);     //nullptr表示指针不指向任何对象
     CMyString(const CMyString& str);
     ~CMyString(void);
 
@@ -30,25 +30,25 @@ CMyString::CMyString(char *pData)
     {
         int length = strlen(pData);
         m_pData = new char[length + 1];
-        strcpy(m_pData, pData);
+        strcpy(m_pData, pData);                  //strcpy 复制字符串
     }
 }
 
-CMyString::CMyString(const CMyString &str)
+CMyString::CMyString(const CMyString &str)    // 常量的引用
 {
-    int length = strlen(str.m_pData);
+    int length = strlen(str.m_pData);         // str.m_pData 是为什么？  为什么要用引用？
     m_pData = new char[length + 1];
     strcpy(m_pData, str.m_pData);
 }
 
 CMyString::~CMyString()
 {
-    delete[] m_pData;
+    delete[] m_pData;                 //析构函数为何要清空这个private指针？？？？？？？？
 }
 
-CMyString& CMyString::operator = (const CMyString& str)
+CMyString& CMyString::operator = (const CMyString& str)      //运算符重载？？？？？？
 {
-    if(this == &str)
+    if(this == &str)                                      //this指针？？？？？
         return *this;
 
     delete []m_pData;
