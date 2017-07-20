@@ -20,7 +20,7 @@ void ReplaceBlank(char str[], int length)
         ++ originalLength;
 
         if(str[i] == ' ')
-            ++ numberOfBlank;
+            ++ numberOfBlank;            //更改字符串是必须考虑它的长度变化吗？？？
 
         ++ i;
     }
